@@ -164,9 +164,6 @@ void autonomous() {
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
 	console.printf("The robot's position is %f\n", chassis.getPose());
 	selector.run_auton();
-	
-
-
 }
 
 /**
