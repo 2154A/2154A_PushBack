@@ -143,7 +143,7 @@ bin/main.cpp.o: src/main.cpp include/main.h \
  include/lemlib/logger/baseSink.hpp include/fmt/args.h \
  include/lemlib/logger/message.hpp include/lemlib/logger/infoSink.hpp \
  include/lemlib/logger/telemetrySink.hpp include/autons.hpp \
- include/consts.hpp
+ include/consts.hpp include/util.hpp include/autons.hpp
 include/main.h:
 include/lemlib/chassis/chassis.hpp:
 include/pros/rtos.hpp:
@@ -388,3 +388,5 @@ include/lemlib/logger/infoSink.hpp:
 include/lemlib/logger/telemetrySink.hpp:
 include/autons.hpp:
 include/consts.hpp:
+include/util.hpp:
+include/autons.hpp:

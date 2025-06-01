@@ -6,6 +6,9 @@
 #include "pros/abstract_motor.hpp"
 #include "pros/misc.h"
 #include "pros/motors.h"
+#include "util.hpp"
+#include "autons.hpp"
+
 	
 #include "pros/rotation.hpp"
 #include "pros/rtos.hpp"
@@ -161,10 +164,18 @@ void competition_initialize() {
  */
 void autonomous() {
 
+
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
 	console.printf("The robot's position is %f\n", chassis.getPose());
 	selector.run_auton();
 }
+
+void arcade() {
+		chassis.arcade(
+			controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y), // forward/backward
+			controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) // turn
+		);
+	}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -184,6 +195,19 @@ void opcontrol() {
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_COAST);
 
 	while (true) {
-		//insar driver control program
+			/**
+		 * DRIVING:
+		 */
+
+		 arcade();
+		
+	
+
+		// printf("arm pos: %d | target: %d\n", arm.encoder.get_position(), arm.target);
+		// printf("arm current: %d\n", arm.arm_motor.get_current_draw());
+		// intake.hues_debug();
+
+		// delay to save system resources
+		pros::delay(DRIVER_TICK);
 	}
 }
