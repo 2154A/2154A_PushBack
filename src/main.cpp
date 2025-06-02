@@ -209,4 +209,4 @@ void opcontrol() {
 		// delay to save system resources
 		pros::delay(DRIVER_TICK);
 	}
-}
+} //goofier ahh
