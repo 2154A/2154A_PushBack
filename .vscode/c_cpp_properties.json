@@ -4,14 +4,15 @@
       "name": "PROS Project",
       "includePath": [
         "${workspaceFolder}/**",
-        "/Users/aarav/Documents/GitHub/2154A_PushBack/include"
+        "/Users/aarav/Documents/GitHub/2154A_PushBack/include",
+        "/Users/mikezhang/Documents/GitHub/2154A_PushBack/include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "/Users/aarav/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
+      "compilerPath": "/Users/mikezhang/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
@@ -20,7 +21,7 @@
       ],
       "browse": {
         "path": [
-          "/Users/aarav/Documents/GitHub/2154A_PushBack"
+          "/Users/mikezhang/Documents/GitHub/2154A_PushBack"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""
