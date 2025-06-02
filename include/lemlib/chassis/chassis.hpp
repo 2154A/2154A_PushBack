@@ -939,3 +939,5 @@ class Chassis {
         pros::Mutex mutex;
 };
 } // namespace lemlib
+
+void arcade();

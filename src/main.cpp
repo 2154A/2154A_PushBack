@@ -7,6 +7,7 @@
 #include "pros/motors.h"
 #include "util.hpp"
 #include "autons.hpp"
+#include "robodash/api.h"
 
 	
 #include "pros/rotation.hpp"
@@ -18,7 +19,7 @@
 
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
-pros::Imu imu(IMU_PORT);
+pros::Imu imu(IMU_PORT);	
 
 bool in_driver_control = false;
 
@@ -104,14 +105,14 @@ lemlib::Chassis chassis(drivetrain, // drivetrain settings
 );
 
 //autonomous selector
-rd::Selector selector({
-    {"insar", test_auton},
-    {"insar", test_auton},
-    {"insar", test_auton,}
-});
+// rd::Selector selector({
+//     {"insar", test_auton},
+//     {"insar", test_auton},
+//     {"insar", test_auton,}
+// });
 
-//global console
-rd::Console console;
+// //global console
+// rd::Console console;
 
 
 /**
@@ -165,16 +166,11 @@ void autonomous() {
 
 
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-	console.printf("The robot's position is %f\n", chassis.getPose());
-	selector.run_auton();
+	// console.printf("The robot's position is %f\n", chassis.getPose());
+	// selector.run_auton();
 }
 
-void arcade() {
-		chassis.arcade(
-			controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y), // forward/backward
-			controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) // turn
-		);
-	}
+
 
 /**
  * Runs the operator control code. This function will be started in its own task
