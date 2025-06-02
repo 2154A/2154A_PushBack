@@ -1,12 +1,12 @@
 
 // dt ports
-#define LEFT_BACK_PORT '0'
-#define LEFT_MID_PORT '0'
-#define LEFT_FRONT_PORT '0'
+#define LEFT_BACK_PORT -11
+#define LEFT_MID_PORT -12
+#define LEFT_FRONT_PORT -13
 
-#define RIGHT_BACK_PORT '0'
-#define RIGHT_MID_PORT '0'
-#define RIGHT_FRONT_PORT '0'
+#define RIGHT_BACK_PORT 20
+#define RIGHT_MID_PORT 19
+#define RIGHT_FRONT_PORT 18
 
 // tracking wheel port + IMU port
 #define HORIZ_TRACK_WHEEL_PORT '0'
