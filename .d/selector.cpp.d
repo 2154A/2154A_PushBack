@@ -1,4 +1,4 @@
-bin/main.cpp.o: src/main.cpp include/main.h \
+bin/selector.cpp.o: src/selector.cpp include/main.h \
  include/lemlib/chassis/chassis.hpp include/pros/rtos.hpp \
  include/pros/rtos.h include/pros/imu.hpp include/pros/device.hpp \
  include/pros/misc.hpp include/pros/misc.h include/pros/imu.h \
@@ -143,8 +143,7 @@ bin/main.cpp.o: src/main.cpp include/main.h \
  include/lemlib/logger/baseSink.hpp include/fmt/args.h \
  include/lemlib/logger/message.hpp include/lemlib/logger/infoSink.hpp \
  include/lemlib/logger/telemetrySink.hpp include/autons.hpp \
- include/consts.hpp include/pros/llemu.hpp include/util.hpp \
- include/autons.hpp
+ include/consts.hpp
 include/main.h:
 include/lemlib/chassis/chassis.hpp:
 include/pros/rtos.hpp:
@@ -389,6 +388,3 @@ include/lemlib/logger/infoSink.hpp:
 include/lemlib/logger/telemetrySink.hpp:
 include/autons.hpp:
 include/consts.hpp:
-include/pros/llemu.hpp:
-include/util.hpp:
-include/autons.hpp:

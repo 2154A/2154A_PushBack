@@ -3,6 +3,7 @@
 #include "lemlib/chassis/chassis.hpp" 
 #include "lemlib/chassis/trackingWheel.hpp"
 #include "pros/abstract_motor.hpp"
+#include "pros/llemu.hpp"
 #include "pros/misc.h"
 #include "pros/motors.h"
 #include "util.hpp"
@@ -104,15 +105,9 @@ lemlib::Chassis chassis(drivetrain, // drivetrain settings
                         sensors // odometry sensors
 );
 
-//autonomous selector
-// rd::Selector selector({
-//     {"insar", test_auton},
-//     {"insar", test_auton},
-//     {"insar", test_auton,}
-// });
 
-// //global console
-// rd::Console console;
+
+
 
 
 /**
@@ -146,8 +141,27 @@ void disabled() {
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
-void competition_initialize() {
 
+
+ // autonomous selector
+rd::Selector selector({
+		
+});
+
+// //global console	
+rd::Console console;
+void competition_initialize() {
+	selector.focus();
+
+
+	// selector.add_auton("Best auton", no_auton);
+	// selector.add_auton("Red Rush Barcbots", red_rush_barcbots);
+	// selector.add_auton("Move Forward", move_forward);
+	// selector.add_auton("Test Auton", test_auton);
+
+	// selector.focus();
+	
+	console.printf("Competition initialized\n");
 
 }
 
@@ -162,12 +176,13 @@ void competition_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+
+
 void autonomous() {
 
 
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-	// console.printf("The robot's position is %f\n", chassis.getPose());
-	// selector.run_auton();
+	selector.run_auton();
 }
 
 
@@ -188,13 +203,13 @@ void autonomous() {
 void opcontrol() {
 	in_driver_control = true;
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_COAST);
-
+	console.printf("The robot's heading is %f\n", imu.get_heading());
 	while (true) {
 			/**
 		 * DRIVING:
 		 */
 
-		 arcade();
+		arcade();
 		
 	
 
