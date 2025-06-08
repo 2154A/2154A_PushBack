@@ -83,8 +83,8 @@ lemlib::ControllerSettings angular_controller(DT_ANGULAR_P, // proportional gain
 );
 
 
-lemlib::TrackingWheel vertical_track(&vertical, 2.75, 0);
-lemlib::TrackingWheel horizontal_track(&horizontal, 2.75,0);
+lemlib::TrackingWheel vertical_track(&vertical, 2.75, 2.644);
+lemlib::TrackingWheel horizontal_track(&horizontal, 2.75,-1.209);
 
 lemlib::OdomSensors sensors(
 							&vertical_track, // vert nullptr test
@@ -142,7 +142,6 @@ void disabled() {
  * starts.
  */
 
-
  // autonomous selector
 rd::Selector selector({
 		
@@ -164,7 +163,6 @@ void competition_initialize() {
 	console.printf("Competition initialized\n");
 
 }
-
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -176,17 +174,12 @@ void competition_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-
-
 void autonomous() {
 
 
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
 	selector.run_auton();
 }
-
-
-
 /**
  * Runs the operator control code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -220,4 +213,4 @@ void opcontrol() {
 		// delay to save system resources
 		pros::delay(DRIVER_TICK);
 	}
-} //goofierier ahhh
+} 
