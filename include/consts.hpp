@@ -9,8 +9,8 @@
 #define RIGHT_FRONT_PORT 18
 
 // tracking wheel port + IMU port
-#define HORIZ_TRACK_WHEEL_PORT '0'
-#define VERTICAL_TRACK_WHEEL_PORT '0'
+#define HORIZ_TRACK_WHEEL_PORT 15
+#define VERTICAL_TRACK_WHEEL_PORT 17
 #define IMU_PORT '0'
 
 // dt PID -- 450rpm 3.25in dt 

@@ -83,8 +83,8 @@ lemlib::ControllerSettings angular_controller(DT_ANGULAR_P, // proportional gain
 );
 
 
-lemlib::TrackingWheel vertical_track(&vertical, 2.75, 2.644);
-lemlib::TrackingWheel horizontal_track(&horizontal, 2.75,-1.209);
+lemlib::TrackingWheel vertical_track(&vertical, 2.75, -3.014);
+lemlib::TrackingWheel horizontal_track(&horizontal, 2.75,0.509);
 
 lemlib::OdomSensors sensors(
 							&vertical_track, // vert nullptr test
@@ -178,7 +178,8 @@ void autonomous() {
 
 
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-	selector.run_auton();
+	// selector.run_auton();
+	test_auton();
 }
 /**
  * Runs the operator control code. This function will be started in its own task
