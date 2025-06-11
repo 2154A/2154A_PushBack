@@ -1,17 +1,5 @@
-# Compiled Object files
 *.o
-*.obj
-
-# Executables
 *.bin
 *.elf
-
-# PROS
-bin/
-.vscode/
-.cache/
+_pros_ld_timestamp.o
 compile_commands.json
-temp.log
-temp.errors
-*.ini
-.d/
