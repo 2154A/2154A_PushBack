@@ -14,13 +14,14 @@
 #include "pros/rotation.hpp"
 #include "pros/rtos.hpp"
 #include "pros/imu.hpp"
+#include "scaled_imu.h"
 
 
 
 
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
-pros::Imu imu(IMU_PORT);	
+robot_systems::modified_api::ScaledIMU IMU(5,1);
 
 bool in_driver_control = false;
 
@@ -198,7 +199,6 @@ void opcontrol() {
 	in_driver_control = true;
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_COAST);
 	console.printf("The robot's heading is %f\n", imu.get_heading());
-	//hiiiii
 
 	while (true) {
 			/**
