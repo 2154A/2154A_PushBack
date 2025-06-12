@@ -39,6 +39,7 @@ void test_auton() {
   chassis.moveToPoint(0, 24, 1250, {.maxSpeed = 80});
   waitd;
 
+
   
 }
 
