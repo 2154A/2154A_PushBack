@@ -18,6 +18,7 @@ hot.package.*
 
 # VS Code settings (optional, remove if you want to share settings)
 .vscode/
+compile_commands.json
 
 # macOS system files (just in case)
 .DS_Store
