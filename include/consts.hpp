@@ -14,8 +14,8 @@
 #define IMU_PORT 21
 
 // dt PID -- 450rpm 3.25in dt 
-#define DT_LATERAL_P 2.5 
-#define DT_LATERAL_D 16
+#define DT_LATERAL_P 8
+#define DT_LATERAL_D 21
 
 #define DT_ANGULAR_P 3.25
 #define DT_ANGULAR_D 34

@@ -8,7 +8,7 @@
 #include "pros/motors.h"
 #include "util.hpp"
 #include "autons.hpp"
-#include "robodash/api.h"
+
 
 	
 #include "pros/rotation.hpp"
@@ -83,8 +83,8 @@ lemlib::ControllerSettings angular_controller(DT_ANGULAR_P, // proportional gain
 );
 
 
-lemlib::TrackingWheel vertical_track(&vertical, 2.75, -1.514);
-lemlib::TrackingWheel horizontal_track(&horizontal, 2.75,0.509);
+lemlib::TrackingWheel vertical_track(&vertical, lemlib::Omniwheel::NEW_275, -2.1);
+lemlib::TrackingWheel horizontal_track(&horizontal, lemlib::Omniwheel::NEW_275,3);
 
 lemlib::OdomSensors sensors(
 							&vertical_track, // vert nullptr test
@@ -117,6 +117,7 @@ lemlib::Chassis chassis(drivetrain, // drivetrain settings
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+	pros::lcd::initialize();
 	chassis.calibrate();
 	
 
@@ -128,7 +129,7 @@ void initialize() {
  * the robot is enabled, this task will exit.
  */
 void disabled() {
-
+	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_COAST);
 	
 }
 
@@ -164,8 +165,13 @@ void competition_initialize() {
 void autonomous() {
 
 
-	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-	// selector.run_auton();
+	// while (true) {
+	// 	pros::lcd::print(1, "Horizontal: %d", horizontal.get_position());
+	// 	pros::lcd::print(2, "Vertical: %d", vertical.get_position());
+	// 	pros::delay(20);
+	// }
+	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
+	// // selector.run_auton();	
 	test_auton();
 }
 /**
@@ -188,6 +194,9 @@ void opcontrol() {
 	//hiiiii
 
 	while (true) {
+
+	// Print rotation sensor values for debugging
+
 			/**
 		 * DRIVING:
 		 */

@@ -28,7 +28,6 @@
  #include "lemlib/chassis/chassis.hpp"
  #include "pros/imu.hpp"
  #define PROS_USE_SIMPLE_NAMES
- #include "robodash/api.h"
  
  /**
   * If defined, C++ literals will be available for use. All literals are in the

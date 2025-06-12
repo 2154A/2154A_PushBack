@@ -9,7 +9,11 @@ bin/main.cpp.o: src/main.cpp include/main.h \
  include/pros/rotation.hpp include/pros/rotation.h \
  include/lemlib/pose.hpp include/lemlib/pid.hpp \
  include/lemlib/exitcondition.hpp include/lemlib/driveCurve.hpp \
- include/pros/imu.hpp include/robodash/api.h include/liblvgl/lvgl.h \
+ include/pros/imu.hpp include/api.h include/pros/adi.h \
+ include/pros/colors.h include/pros/device.h include/pros/distance.h \
+ include/pros/error.h include/pros/ext_adi.h include/pros/adi.h \
+ include/pros/gps.h include/pros/imu.h include/pros/link.h \
+ include/pros/llemu.h include/liblvgl/llemu.h include/liblvgl/lvgl.h \
  include/liblvgl/misc/lv_log.h include/liblvgl/lv_conf_internal.h \
  include/liblvgl/lv_conf_kconfig.h include/liblvgl/lv_conf.h \
  include/liblvgl/misc/lv_types.h include/liblvgl/misc/lv_timer.h \
@@ -119,13 +123,7 @@ bin/main.cpp.o: src/main.cpp include/main.h \
  include/liblvgl/extra/widgets/colorwheel/lv_colorwheel.h \
  include/liblvgl/extra/widgets/led/lv_led.h \
  include/liblvgl/extra/widgets/imgbtn/lv_imgbtn.h \
- include/liblvgl/extra/widgets/span/lv_span.h include/robodash/core.h \
- include/robodash/views/console.hpp include/robodash/views/image.hpp \
- include/robodash/views/selector.hpp include/api.h include/pros/adi.h \
- include/pros/colors.h include/pros/device.h include/pros/distance.h \
- include/pros/error.h include/pros/ext_adi.h include/pros/adi.h \
- include/pros/gps.h include/pros/imu.h include/pros/link.h \
- include/pros/llemu.h include/liblvgl/llemu.h include/pros/misc.h \
+ include/liblvgl/extra/widgets/span/lv_span.h include/pros/misc.h \
  include/pros/motors.h include/pros/optical.h include/pros/error.h \
  include/pros/rotation.h include/pros/rtos.h include/pros/screen.h \
  include/pros/colors.h include/pros/vision.h include/pros/adi.hpp \
@@ -171,7 +169,19 @@ include/lemlib/pid.hpp:
 include/lemlib/exitcondition.hpp:
 include/lemlib/driveCurve.hpp:
 include/pros/imu.hpp:
-include/robodash/api.h:
+include/api.h:
+include/pros/adi.h:
+include/pros/colors.h:
+include/pros/device.h:
+include/pros/distance.h:
+include/pros/error.h:
+include/pros/ext_adi.h:
+include/pros/adi.h:
+include/pros/gps.h:
+include/pros/imu.h:
+include/pros/link.h:
+include/pros/llemu.h:
+include/liblvgl/llemu.h:
 include/liblvgl/lvgl.h:
 include/liblvgl/misc/lv_log.h:
 include/liblvgl/lv_conf_internal.h:
@@ -327,23 +337,6 @@ include/liblvgl/extra/widgets/colorwheel/lv_colorwheel.h:
 include/liblvgl/extra/widgets/led/lv_led.h:
 include/liblvgl/extra/widgets/imgbtn/lv_imgbtn.h:
 include/liblvgl/extra/widgets/span/lv_span.h:
-include/robodash/core.h:
-include/robodash/views/console.hpp:
-include/robodash/views/image.hpp:
-include/robodash/views/selector.hpp:
-include/api.h:
-include/pros/adi.h:
-include/pros/colors.h:
-include/pros/device.h:
-include/pros/distance.h:
-include/pros/error.h:
-include/pros/ext_adi.h:
-include/pros/adi.h:
-include/pros/gps.h:
-include/pros/imu.h:
-include/pros/link.h:
-include/pros/llemu.h:
-include/liblvgl/llemu.h:
 include/pros/misc.h:
 include/pros/motors.h:
 include/pros/optical.h:

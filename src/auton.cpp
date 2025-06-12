@@ -53,3 +53,9 @@ void move_forward() {
   waitd;
   
 }
+
+void auton (){
+  chassis.setPose(43,12.5, 270);
+  chassis.moveToPose(10.578, 39.117, 311.2, 1200, {.minSpeed = 120});
+  waitd;
+}
