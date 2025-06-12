@@ -83,7 +83,7 @@ lemlib::ControllerSettings angular_controller(DT_ANGULAR_P, // proportional gain
 );
 
 
-lemlib::TrackingWheel vertical_track(&vertical, 2.75, -3.014);
+lemlib::TrackingWheel vertical_track(&vertical, 2.75, -1.514);
 lemlib::TrackingWheel horizontal_track(&horizontal, 2.75,0.509);
 
 lemlib::OdomSensors sensors(
@@ -143,24 +143,11 @@ void disabled() {
  */
 
  // autonomous selector
-rd::Selector selector({
-		
-});
+
 
 // //global console	
-rd::Console console;
+
 void competition_initialize() {
-	selector.focus();
-
-
-	// selector.add_auton("Best auton", no_auton);
-	// selector.add_auton("Red Rush Barcbots", red_rush_barcbots);
-	// selector.add_auton("Move Forward", move_forward);
-	// selector.add_auton("Test Auton", test_auton);
-
-	// selector.focus();
-	
-	console.printf("Competition initialized\n");
 
 }
 /**
@@ -197,7 +184,7 @@ void autonomous() {
 void opcontrol() {
 	in_driver_control = true;
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_COAST);
-	console.printf("The robot's heading is %f\n", imu.get_heading());
+	
 	//hiiiii
 
 	while (true) {

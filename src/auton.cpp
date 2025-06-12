@@ -4,6 +4,8 @@
 #include "lemlib/pose.hpp"
 #include "pros/rtos.hpp"
 #include "util.hpp"
+#include "pros/rtos.hpp"
+#include "lemlib/pose.hpp"
 
 
 //test
@@ -33,17 +35,9 @@ void moveDist(double x, int timeout, bool forwards = true, float maxSpeed = 127)
 void test_auton() {
   chassis.setPose(0, 0, 0);
 
-  // chassis.moveToPoint(0, 24, 1000, {.maxSpeed = 80});
-  // waitd;
-
-  // chassis.turnToHeading(45, 1000, {.maxSpeed = 80});
-  // waitd;
-
-  // chassis.moveToPoint(24, 48, 1000, {.maxSpeed = 80});
-
+  // chassis.moveToPoint(0, 24, 1000, {.maxSpeed = 80})
   chassis.moveToPoint(0, 24, 1250, {.maxSpeed = 80});
   waitd;
-  chassis.turnToHeading(90, 650);
 
   
 }
