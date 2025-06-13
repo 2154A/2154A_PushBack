@@ -1,3 +1,4 @@
+#include <cstdarg>
 #include "main.h"
 #include "consts.hpp"
 #include "lemlib/chassis/chassis.hpp" 
@@ -8,11 +9,16 @@
 #include "pros/motors.h"
 #include "util.hpp"
 #include "autons.hpp"
+#include "autonselector.hpp"
+#include "pros/screen.hpp"
+#include "pros/llemu.hpp"
+#include "pros/motor_group.hpp"
+
 
 
 	
 #include "pros/rotation.hpp"
-#include "pros/rtos.hpp"
+#include "pros/rtos.hpp"	
 #include "pros/imu.hpp"
 
 
@@ -23,6 +29,54 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 pros::Imu imu(IMU_PORT);	
 
 bool in_driver_control = false;
+
+int autonNumber = 0;
+const char* autonNames[] = {"Red Left", "Red Right", "Blue Left"};
+
+lv_obj_t* auton_buttons[3];
+
+
+void update_auton_button_colors() {
+    for (int i = 0; i < 3; i++) {
+        lv_obj_set_style_bg_color(auton_buttons[i], autonNumber == i ? lv_color_hex(0x00FF00) : lv_color_hex(0x444444), 0);
+    }
+}
+
+void auton_button_cb(lv_event_t* event) {
+    for (int i = 0; i < 3; i++) {
+        if (event->target == auton_buttons[i]) {
+            autonNumber = i;
+            break;
+        }
+    }
+
+    // Highlight selected button
+    for (int i = 0; i < 3; i++) {
+        lv_obj_set_style_bg_color(auton_buttons[i], autonNumber == i ? lv_color_hex(0x00FF00) : lv_color_hex(0x444444), 0);
+    }
+}
+
+void drawSelector() {
+    lv_obj_t* scr = lv_scr_act();
+
+    for (int i = 0; i < 3; i++) {
+        auton_buttons[i] = lv_btn_create(scr);
+        lv_obj_set_size(auton_buttons[i], 140, 60);
+        lv_obj_align(auton_buttons[i], LV_ALIGN_CENTER, (i - 1) * 160, 0); // -160, 0, +160
+        lv_obj_add_event_cb(auton_buttons[i], auton_button_cb, LV_EVENT_CLICKED, NULL);
+
+        lv_obj_t* label = lv_label_create(auton_buttons[i]);
+        lv_label_set_text(label, autonNames[i]);
+        lv_obj_center(label);
+    }
+
+    // Set initial highlight
+    update_auton_button_colors();
+}
+
+void autonSelectorTask(void*) {
+    // No longer needed with LVGL event system, so leave empty or remove
+}
 
 
 // ---
@@ -117,11 +171,10 @@ lemlib::Chassis chassis(drivetrain, // drivetrain settings
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
+	drawSelector();
+	pros::delay(3000); // Give time for the screen to update
 	chassis.calibrate();
-	
-
-}	
+}
 
 /**
  * Runs while the robot is in the disabled state of Field Management System or
@@ -164,15 +217,16 @@ void competition_initialize() {
  */
 void autonomous() {
 
-
-	// while (true) {
-	// 	pros::lcd::print(1, "Horizontal: %d", horizontal.get_position());
-	// 	pros::lcd::print(2, "Vertical: %d", vertical.get_position());
-	// 	pros::delay(20);
-	// }
 	chassis.setBrakeMode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
-	// // selector.run_auton();	
-	test_auton();
+
+	switch (autonNumber) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+	}
 }
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -212,4 +266,4 @@ void opcontrol() {
 		// delay to save system resources
 		pros::delay(DRIVER_TICK);
 	}
-} 
+}

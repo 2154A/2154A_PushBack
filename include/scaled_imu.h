@@ -6,16 +6,17 @@
 namespace robot_systems {
 namespace modified_api {
 class ScaledIMU : public pros::IMU {
-    public:
-        ScaledIMU(int port, double scalar)
-            : pros::IMU(port),
-            m_port(port),
-            m_scalar(scalar) {}
+public:
+    ScaledIMU(int port, double scalar)
+        : pros::IMU(port), port_(port), scalar_(scalar) {}
 
-        virtual double get_rotation() const { return pros::c::imu_get_rotation(m_port) * m_scalar; }
-    private:
-        const int m_port;
-        const double m_scalar;
+    double get_rotation() const override {
+        return pros::c::imu_get_rotation(port_) * scalar_;
+    }
+
+private:
+    int port_;
+    double scalar_;
 };
 } // namespace modifiedAPI
 } // namespace robotSystems

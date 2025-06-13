@@ -142,7 +142,7 @@ bin/main.cpp.o: src/main.cpp include/main.h \
  include/lemlib/logger/message.hpp include/lemlib/logger/infoSink.hpp \
  include/lemlib/logger/telemetrySink.hpp include/autons.hpp \
  include/consts.hpp include/pros/llemu.hpp include/util.hpp \
- include/autons.hpp
+ include/autons.hpp include/autonselector.hpp include/pros/screen.hpp
 include/main.h:
 include/lemlib/chassis/chassis.hpp:
 include/pros/rtos.hpp:
@@ -385,3 +385,5 @@ include/consts.hpp:
 include/pros/llemu.hpp:
 include/util.hpp:
 include/autons.hpp:
+include/autonselector.hpp:
+include/pros/screen.hpp:
