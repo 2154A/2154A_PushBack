@@ -31,14 +31,48 @@ pros::Imu imu(IMU_PORT);
 bool in_driver_control = false;
 
 int autonNumber = 0;
-const char* autonNames[] = {"Red Left", "Red Right", "Blue Left"};
+const char* autonNames[] = {"Left", "Right", "Solo"};
+
 
 lv_obj_t* auton_buttons[3];
+
+void show_loading_screen() {
+    lv_obj_t* scr = lv_scr_act();
+
+    // Create background
+    lv_obj_t* bg = lv_obj_create(scr);
+    lv_obj_set_size(bg, 480, 240);
+    lv_obj_set_style_bg_color(bg, lv_color_black(), 0);
+    lv_obj_clear_flag(bg, LV_OBJ_FLAG_SCROLLABLE);
+
+    // Title
+    lv_obj_t* label = lv_label_create(bg);
+    lv_label_set_text(label, "2154A");
+    lv_obj_set_style_text_color(label, lv_color_white(), 0);
+	lv_obj_set_style_text_font(label, LV_FONT_DEFAULT, 0);
+    lv_obj_align(label, LV_ALIGN_CENTER, 0, -40);
+
+    // Progress bar
+    lv_obj_t* bar = lv_bar_create(bg);
+    lv_obj_set_size(bar, 300, 20);
+    lv_obj_align(bar, LV_ALIGN_CENTER, 0, 20);
+    lv_bar_set_range(bar, 0, 100);
+
+    // Animate progress
+    for (int i = 0; i <= 100; i += 5) {
+        lv_bar_set_value(bar, i, LV_ANIM_OFF);
+        pros::delay(30);
+    }
+
+    // Short delay before clearing
+    pros::delay(250);
+    lv_obj_clean(scr); // clear screen before showing auton selector
+}
 
 
 void update_auton_button_colors() {
     for (int i = 0; i < 3; i++) {
-        lv_obj_set_style_bg_color(auton_buttons[i], autonNumber == i ? lv_color_hex(0x00FF00) : lv_color_hex(0x444444), 0);
+        lv_obj_set_style_bg_color(auton_buttons[i], autonNumber == i ? lv_color_hex(0xADD8E6) : lv_color_hex(0x444444), 0);
     }
 }
 
@@ -52,7 +86,7 @@ void auton_button_cb(lv_event_t* event) {
 
     // Highlight selected button
     for (int i = 0; i < 3; i++) {
-        lv_obj_set_style_bg_color(auton_buttons[i], autonNumber == i ? lv_color_hex(0x00FF00) : lv_color_hex(0x444444), 0);
+        lv_obj_set_style_bg_color(auton_buttons[i], autonNumber == i ? lv_color_hex(0xADD8E6) : lv_color_hex(0x444444), 0);
     }
 }
 
@@ -72,6 +106,7 @@ void drawSelector() {
 
     // Set initial highlight
     update_auton_button_colors();
+
 }
 
 void autonSelectorTask(void*) {
@@ -171,9 +206,10 @@ lemlib::Chassis chassis(drivetrain, // drivetrain settings
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	drawSelector();
-	pros::delay(3000); // Give time for the screen to update
-	chassis.calibrate();
+    show_loading_screen();
+    drawSelector();
+    pros::delay(3000); // Give time for the screen to update
+    chassis.calibrate();
 }
 
 /**
