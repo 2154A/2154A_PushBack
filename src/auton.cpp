@@ -7,7 +7,6 @@
 #include "pros/rtos.hpp"
 #include "lemlib/pose.hpp"
 
-
 //test
 
 void print_robot_pos(void *chassisVoid) {
@@ -22,6 +21,7 @@ void print_robot_pos(void *chassisVoid) {
     pros::delay(100);
   }
 }
+
 void moveDist(double x, int timeout, bool forwards = true, float maxSpeed = 127) {
   lemlib::Pose p = chassis.getPose();
   if (!forwards) {
@@ -53,10 +53,4 @@ void move_forward() {
   chassis.moveToPoint(0, 7, 1000);
   waitd;
   
-}
-
-void auton (){
-  chassis.setPose(43,12.5, 270);
-  chassis.moveToPose(10.578, 39.117, 311.2, 1200, {.minSpeed = 120});
-  waitd;
 }
