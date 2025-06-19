@@ -8,6 +8,10 @@
 #define RIGHT_MID_PORT 19
 #define RIGHT_FRONT_PORT 18
 
+#define PRE_ROLLER_PORT 16
+#define ROLLER_PORT 14
+
+
 // tracking wheel port + IMU port
 #define HORIZ_TRACK_WHEEL_PORT 15
 #define VERTICAL_TRACK_WHEEL_PORT 17
