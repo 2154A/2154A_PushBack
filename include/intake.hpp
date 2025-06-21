@@ -6,9 +6,10 @@ void run_intake_forward();
 
 
 // Stop intake motors
-void stop_intake();
-
+void intake_brake();
 
 // Run intake motors in reverse
 void run_intake_reverse();
 
+//mid goal thingys
+void mid_goal_score();

@@ -38,7 +38,7 @@
  #define PROS_USE_LITERALS
  
  /**
-  * track width (dist btwn centers of left and right wheels): ~11.75in (cad says 11.878 for some reason)
+  * track    width (dist btwn centers of left and right wheels): ~11.75in (cad says 11.878 for some reason)
   */
  
  #include "api.h"
@@ -59,6 +59,7 @@
   */
  
  extern pros::MotorGroup left_motors;
+  extern pros::MotorGroup intake_motors;
  extern pros::MotorGroup right_motors;
  extern pros::Controller controller;
  extern pros::Imu imu;

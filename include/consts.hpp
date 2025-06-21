@@ -8,8 +8,13 @@
 #define RIGHT_MID_PORT 19
 #define RIGHT_FRONT_PORT 18
 
-#define PRE_ROLLER_PORT 16
-#define ROLLER_PORT 14
+#define PRE_ROLLER_PORT -14
+#define ROLLER_PORT -16
+#define MID_GOAL_PORT 10
+
+#define COUNTER_ROLLER 'A'
+#define REDIRECT_ADI 'B'
+#define HOOD 'C'
 
 
 // tracking wheel port + IMU port
